@@ -46,27 +46,91 @@ code {
   margin: 5px;
 }
 
+.X{
+  border: none;
+}
+
+
+
+.X:hover {
+  fill:teal;
+}
+
+
+
+.XContainer{
+
+  position: relative;
+  top: 0;
+  padding-left: 505px;
+  padding-top: 10px;
+  margin-right: auto;
+  width: 25px;
+
+
+}
+
+.smooth-dnd-container{
+  flex: 100%;
+  position: relative;
+  min-height: 100%;
+  width: 100%;
+}
+
+.btn{
+  background-color: teal;
+  color: #FFF;
+  border: solid 2px #FFF;
+}
+
+.btn:hover{
+  border: solid 2px teal;
+  background-color: #FFF;
+  color: teal;
+}
+
+.capital{
+  text-transform: uppercase;
+}
 
 
 #container2{
-  border: grey solid 2px;
-  width: 500px;
-  height: 500px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 900px;
+  background-color: #d3d3d3;
+  margin-right: 20px;
+  margin-left: 40px;
+  padding: 15px;
+  height: 100%;
+  min-height:650px;
+  padding-bottom: 300px;
+  overflow:auto;
+  z-index: 2;
 }
 
 #container2 .draggable-item{
-width: 450px;
-margin-left:auto;
-margin-right: auto;
+height: 100%;
+min-height: 350px;
+margin-bottom: -1px;
+filter: brightness(100%);
+}
+
+#container2 .draggable-item:hover{
+  filter: brightness(95%);
 }
 
 .draggable-item{
-  width: 250px;
-  height:40px;
-  margin: 5px;
-  border: black solid 2px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 250px;
+  width: auto;
+  /* margin: 5px; */
+  overflow: visible;
   background-color: #FFF;
-  z-index: 3000;
+  z-index: 9999;
 }
 
 #flyoutMenu {
@@ -86,6 +150,7 @@ margin-right: auto;
   width: 500px;
   margin-left: auto;
   margin-right: auto;
+  overflow: visible;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -134,3 +199,58 @@ margin-right: auto;
   border-color: #003557;
   background-color: #FFF;
 }
+
+#exitBtnCont {
+  position: relative;
+  right: -550px;
+  top: -10px;
+
+}
+
+#exitBtn{
+  color: white;
+  background-color: teal;
+  border-radius: 50%;
+  border: white 2px solid;
+  font-size: 18px;
+  width: 32px;
+  margin: 15px;
+  /* float: right; */
+
+}
+
+
+.exitBtnCont{
+  display: flex;
+  justify-content: flex-end;
+
+  align-items: flex-start;
+}
+
+#exitBtn:hover{
+  background-color: #FFF;
+  color: teal;
+  border: teal 2px solid;
+}
+
+.btnWrapper{
+  display: flex;
+justify-content: flex-end;
+}
+
+.container1 {
+  width: 100%;
+  max-height: 800px;
+  max-width: 300px;
+  background-color: #313131;
+  padding: 15px;
+}
+
+.container1 .draggable-item{
+  margin: 5px;
+  border: teal solid 2px;
+}
+
+/* .fixed{
+  position: fixed;
+} */
