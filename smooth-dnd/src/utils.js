@@ -23,5 +23,5 @@ export const applyDrag = (arr, dragResult) => {
       result.push(creator(i));
     }
     return result;
-    console.log(result);
+    // console.log(result);
   };
