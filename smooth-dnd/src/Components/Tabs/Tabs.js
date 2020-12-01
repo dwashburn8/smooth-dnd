@@ -34,6 +34,15 @@ class ContainerTabs extends Component {
         }
     }
 
+    removeElement1 = (event) => {
+        var array = [...this.state.items2];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items2: array})
+        }
+    }
+
     getChildPayload1 = (i) => {
         return (
             this.state.items2[i]
@@ -42,6 +51,15 @@ class ContainerTabs extends Component {
 
     onDrop1 = (e) => {
         this.setState({ items2: applyDrag(this.state.items2, e) })
+    }
+
+    removeElement2 = (event) => {
+        var array = [...this.state.items3];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items3: array})
+        }
     }
 
     getChildPayload2 = (i) => {
@@ -54,6 +72,15 @@ class ContainerTabs extends Component {
         this.setState({ items3: applyDrag(this.state.items3, e) })
     }
 
+    removeElement3 = (event) => {
+        var array = [...this.state.items4];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items4: array})
+        }
+    }
+
     getChildPayload3 = (i) => {
         return (
             this.state.items4[i]
@@ -62,6 +89,15 @@ class ContainerTabs extends Component {
 
     onDrop3 = (e) => {
         this.setState({ items4: applyDrag(this.state.items4, e) })
+    }
+
+    removeElement4 = (event) => {
+        var array = [...this.state.items5];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items5: array})
+        }
     }
 
     
@@ -75,6 +111,14 @@ class ContainerTabs extends Component {
         this.setState({ items5: applyDrag(this.state.items5, e) })
     }
 
+    removeElement5 = (event) => {
+        var array = [...this.state.items6];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items6: array})
+        }
+    }
     
     getChildPayload5 = (i) => {
         return (
@@ -86,6 +130,16 @@ class ContainerTabs extends Component {
         this.setState({ items6: applyDrag(this.state.items6, e) })
     }
 
+
+    removeElement6 = (event) => {
+        var array = [...this.state.items7];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items7: array})
+        }
+    }
+
     getChildPayload6 = (i) => {
         return (
             this.state.items7[i]
@@ -94,6 +148,15 @@ class ContainerTabs extends Component {
 
     onDrop6 = (e) => {
         this.setState({ items7: applyDrag(this.state.items7, e) })
+    }
+
+    removeElement7 = (event) => {
+        var array = [...this.state.items8];
+        var index = array.indexOf(event.target.value);
+        if(array !== -1){
+            array.splice(index, 1);
+            this.setState({items8: array})
+        }
     }
 
     getChildPayload7 = (i) => {
@@ -203,6 +266,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop1}
                             getChildPayload={this.getChildPayload1}
                             generateItems={this.state.items2}
+                            removeElement={this.removeElement1}
                         />
                     </TabContent>
                     <TabContent for="tab2">
@@ -210,6 +274,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop2}
                             getChildPayload={this.getChildPayload2}
                             generateItems={this.state.items3}
+                            removeElement={this.removeElement2}
                         />
                     </TabContent>
                     <TabContent for="tab3">
@@ -217,6 +282,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop3}
                             getChildPayload={this.getChildPayload3}
                             generateItems={this.state.items4}
+                            removeElement={this.removeElement3}
                         />
                     </TabContent>
                     <TabContent for="tab4">
@@ -224,6 +290,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop4}
                             getChildPayload={this.getChildPayload4}
                             generateItems={this.state.items5}
+                            removeElement={this.removeElement4}
                         />
                     </TabContent>
                     <TabContent for="tab5">
@@ -231,6 +298,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop5}
                             getChildPayload={this.getChildPayload5}
                             generateItems={this.state.items6}
+                            removeElement={this.removeElement5}
                         />
                     </TabContent>
                     <TabContent for="tab6">
@@ -238,6 +306,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop}
                             getChildPayload={this.getChildPayload6}
                             generateItems={this.state.items7}
+                            removeElement={this.removeElement6}
                         />
                     </TabContent>
                     <TabContent for="tab7">
@@ -245,6 +314,7 @@ class ContainerTabs extends Component {
                             onDrop={this.onDrop7}
                             getChildPayload={this.getChildPayload7}
                             generateItems={this.state.items8}
+                            removeElement={this.removeElement7}
                         />
                     </TabContent>
                 </Tabs>

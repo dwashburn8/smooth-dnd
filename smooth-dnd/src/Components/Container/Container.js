@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Draggable } from 'react-smooth-dnd';
-import { applyDrag, generateItems } from '../../utils';
 import XButton from "../XButton/XButton"
 
 
 
 
 class Container1 extends Component {
-    constructor(props) {
-        super(props);
-
-
-    }
-
-
-
-
 
     handleXButton(event, id) {
         event.stopPropagation();
@@ -28,8 +18,8 @@ class Container1 extends Component {
         window.addEventListener("scroll", noScroll)
         const selectedDiv = event.target.parentElement;
         let parentDiv = selectedDiv.parentElement;
-        let grandparent = parentDiv.parentElement
-        grandparent.remove();
+        console.log(parentDiv.id);
+        parentDiv.remove();
         window.removeEventListener('scroll', noScroll);
     }
 
@@ -50,7 +40,7 @@ class Container1 extends Component {
                             return (
                                 <Draggable key={i}>
                                     <div id={p.data} className="draggable-item">
-                                        <XButton handleXButton={this.handleXButton} />
+                                        <XButton removeElement={this.props.removeElement1} handleXButton={this.handleXButton} />
                                     </div>
                                 </Draggable>
                             );

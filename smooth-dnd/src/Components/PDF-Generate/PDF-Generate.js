@@ -13,21 +13,11 @@ class PDFGenerate extends React.Component {
         var data1 = [];
         var dataFromContainer1 = this.props.dataFromContainer1
         console.log(dataFromContainer1);
-        var title1 = this.props.pageTitles;
-        console.log(title1);
-        // data1.push(title1)
         dataFromContainer1.map((element) => {
-            let elem = document.getElementById(element.data)
-            let ht = window.getComputedStyle(elem, null).getPropertyValue("background-image")
-            console.log(ht);
-            var mySubString = ht.substring(
-                ht.lastIndexOf('(') + 1,
-                ht.lastIndexOf(")")
-            );
-            var withoutQuotes = mySubString.replace(/^"(.+(?="$))"$/, '$1');
-            data1.push(withoutQuotes)
+            console.log(element.data);
+            data1.push(element.data)
 
-            console.log(data1);
+       
         })
         var data2 = [];
         var dataFromContainer2 = this.props.dataFromContainer2
@@ -79,14 +69,7 @@ class PDFGenerate extends React.Component {
         })
 
         var doc = new jsPDF('p', 'pt');
-        var img = new Image()
-        for (let i = 0; i < data1.length; i++) {
-            const picture = data1[i];
-            
-            img.src=picture
-            doc.addImage(img, "png", 10,78,580,300);
-            doc.text(20,20," vcxvxcv")
-        }
+        doc.text(20, 20, data1);
         doc.addPage();
         doc.text(20, 20, data2);
         doc.addPage();
@@ -112,3 +95,33 @@ class PDFGenerate extends React.Component {
 }
 
 export default PDFGenerate;
+
+
+
+// var title1 = this.props.pageTitles;
+// console.log(title1);
+// // data1.push(title1)
+// dataFromContainer1.map((element) => {
+//     let elem = document.getElementById(element.data)
+//     let ht = window.getComputedStyle(elem, null).getPropertyValue("background-image")
+//     console.log(ht);
+//     var mySubString = ht.substring(
+//         ht.lastIndexOf('(') + 1,
+//         ht.lastIndexOf(")")
+//     );
+//     var withoutQuotes = mySubString.replace(/^"(.+(?="$))"$/, '$1');
+//     data1.push(withoutQuotes)
+
+//     console.log(data1);
+
+
+
+
+// var img = new Image()
+// for (let i = 0; i < data1.length; i++) {
+//     const picture = data1[i];
+    
+//     img.src=picture
+//     doc.addImage(img, "png", 10,78,580,300);
+//     doc.text(20,20," vcxvxcv")
+// }
