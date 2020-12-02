@@ -17,11 +17,17 @@ const Preview = ({ meta }) => {
     </div>
   )
 }
+
+
  
 function FileUpload() {
   
   // specify upload params and API url to file upload
-  const getUploadParams = ({ meta }) => { return { url: 'http://localhost:8000/uploads' } }
+  const getUploadParams = ({ file, meta }) => {
+    const body = new FormData()
+    body.append('fileField', file)
+    return { url: 'http://localhost:8000/uploads', body }
+  }
  
   // handle the status of the file upload
   const handleChangeStatus = ({ meta, file }, status) => { console.log(status, meta, file) }
@@ -38,11 +44,11 @@ function FileUpload() {
         <Dropzone
           getUploadParams={getUploadParams}
           onChangeStatus={handleChangeStatus}
+          onSubmit={handleSubmit}
           styles={{
             dropzone: { overflow: 'auto', border: '1px solid #999', background: '#f5f5f5' },
             inputLabelWithFiles: { margin: '20px 3%' }
           }}
-          onSubmit={handleSubmit}
           // PreviewComponent={Preview}
           accept="image/*,audio/*,video/*"
         />
