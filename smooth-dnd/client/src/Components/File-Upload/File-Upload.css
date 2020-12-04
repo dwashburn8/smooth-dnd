@@ -1,0 +1,88 @@
+.dzu-dropzone{
+min-width: 300px;
+}
+
+.FileUploader h3{
+    font-size: 22px;
+    text-align: center;
+}
+.preview-box {
+  display:flex;
+  align-items:center;
+  width: calc(100% - 30px);
+  padding: 10px 3%;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+}
+ 
+.preview-box img {
+  max-height: 80px;
+  max-width: 80px;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+ 
+.preview-box .name {
+  font-style: italic;
+  color: #666;
+  margin-right: 7px;
+}
+ 
+.preview-box .percent {
+  font-weight: 600;
+}
+ 
+.preview-box .status {
+  margin-left: 7px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* new */
+
+.files input {
+  outline: 2px dashed #92b0b3;
+  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  padding: 120px 0px 85px 15%;
+  text-align: center !important;
+  margin: 0;
+  width: 100% !important;
+}
+.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+}
+.files{ position:relative}
+.files:after {  pointer-events: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 50px;
+  right: 0;
+  height: 56px;
+  content: "";
+  background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+  display: block;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+.color input{ background-color:#f1f1f1;}
+.files:before {
+  position: absolute;
+  bottom: 50px;
+  left: 10;  pointer-events: none;
+  width: 100%;
+  right: 0;
+  height: 57px;
+  content: " or drag it here. ";
+  display: block;
+  margin: 0 auto;
+  color: #2ea591;
+  font-weight: 600;
+  text-transform: capitalize;
+  text-align: center;
+}
