@@ -1,26 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from "react"
 import jsPDF from 'jspdf'
+import API from "../../utils/API"
+import { useAuth0 } from '@auth0/auth0-react';
 
-class PDFGenerate extends React.Component {
+function PDFGenerate(props){
+    // const { user } = useAuth0();    
+    const [values, setValues] = useState({ userName: props.userName, email: props.userEmail, projects: [] });
+    // const [errors, setErrors] = useState({});
 
-    constructor(props) {
-        super(props)
-        
-    };
 
-    generatePDF = () => {
+    const generatePDF = () => {
         
         var data1 = [];
-        var dataFromContainer1 = this.props.dataFromContainer1
+        var dataFromContainer1 = props.dataFromContainer1
         console.log(dataFromContainer1);
         dataFromContainer1.map((element) => {
             console.log(element.data);
             data1.push(element.data)
-
-       
+            return data1 
         })
         var data2 = [];
-        var dataFromContainer2 = this.props.dataFromContainer2
+        var dataFromContainer2 = props.dataFromContainer2
         console.log(dataFromContainer2);
         dataFromContainer2.map((element) => {
             console.log(element.data);
@@ -28,7 +28,7 @@ class PDFGenerate extends React.Component {
 
         })
         var data3 = [];
-        var dataFromContainer3 = this.props.dataFromContainer3
+        var dataFromContainer3 = props.dataFromContainer3
         console.log(dataFromContainer3);
         dataFromContainer3.map((element) => {
             console.log(element.data);
@@ -36,7 +36,7 @@ class PDFGenerate extends React.Component {
 
         })
         var data4 = [];
-        var dataFromContainer4 = this.props.dataFromContainer4
+        var dataFromContainer4 = props.dataFromContainer4
         console.log(dataFromContainer4);
         dataFromContainer4.map((element) => {
             console.log(element.data);
@@ -44,7 +44,7 @@ class PDFGenerate extends React.Component {
 
         })
         var data5 = [];
-        var dataFromContainer5 = this.props.dataFromContainer5
+        var dataFromContainer5 = props.dataFromContainer5
         console.log(dataFromContainer5);
         dataFromContainer5.map((element) => {
             console.log(element.data);
@@ -52,7 +52,7 @@ class PDFGenerate extends React.Component {
 
         })
         var data6 = [];
-        var dataFromContainer6 = this.props.dataFromContainer6
+        var dataFromContainer6 = props.dataFromContainer6
         console.log(dataFromContainer6);
         dataFromContainer6.map((element) => {
             console.log(element.data);
@@ -60,7 +60,7 @@ class PDFGenerate extends React.Component {
 
         })
         var data7 = [];
-        var dataFromContainer7 = this.props.dataFromContainer7
+        var dataFromContainer7 = props.dataFromContainer7
         console.log(dataFromContainer7);
         dataFromContainer7.map((element) => {
             console.log(element.data);
@@ -95,15 +95,24 @@ class PDFGenerate extends React.Component {
             doc.text(20, 20, data7);
         }
         doc.save('demo.pdf');
+
+        API.saveUser(values)
+        .then(() => {
+            console.log(values);
+            
+        })
+        .catch(err => console.log(err)
+        )
+
     }
 
-    render() {
+    
         return (
             <div className="btn-container">
-                <button className="btn capital long" onClick={this.generatePDF} type="primary">Download PDF</button>
+                <button className="btn capital long" onClick={generatePDF} type="primary">Download PDF</button>
             </div>
         );
-    }
+    
 }
 
 export default PDFGenerate;

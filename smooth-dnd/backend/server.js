@@ -1,11 +1,15 @@
 const express = require("express");
 const path = require("path");
-const PORT = process.env.PORT || 8000;
+const routes = require("./routes/index");
+const PORT = process.env.PORT || 3001;
 const app = express();
 var multer = require('multer')
 var cors = require('cors');
+const mongoose = require("mongoose");
+
 
 // Define middleware here
+
 app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -42,10 +46,16 @@ app.post('/upload', function (req, res) {
 
 });
 // Define API routes here
+app.use(routes);
 
-// Send every other request to the React app
-// Define any API routes before this runs
 
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/react", {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
+
+// routes
+app.use(require("./routes/api/index"));
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));

@@ -2,3 +2,7 @@ nav{
     padding: 35px;
     background-color: black;
 }
+
+nav h3{
+    color: #FFF;
+}

@@ -20,10 +20,12 @@ const styles = {
 
 
 class ContainerTabs extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
+            userName : this.props.name,
+            userEmail: this.props.email,
             items2: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 2 - ${i}` })),
             items3: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 3 - ${i}` })),
             items4: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 4 - ${i}` })),
@@ -265,6 +267,8 @@ class ContainerTabs extends Component {
         return (
             <>
                 <PDFGenerate 
+                userName={this.state.userName}
+                userEmail= {this.state.userEmail}
                 dataFromContainer1={this.state.items2}
                 dataFromContainer2={this.state.items3}
                 dataFromContainer3={this.state.items4}

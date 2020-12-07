@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import ContainerTabs from "./Components/Tabs/Tabs"
 import FileUpload from "./Components/File-Upload/File-Upload"
 import ContactContainer from "./Components/Contact/Contact-Container/Contact-Container"
@@ -8,25 +9,23 @@ import Gallery from "./Components/Gallery/Gallery-Container/Gallery-Container"
 import Headers from "./Components/Headers/Header-Container/Header-Container"
 import Footers from "./Components/Footers/Footer-Container/Footer-Container"
 import Header from "./Components/Header/Header"
+import LoginButton from "./Components/LoginButton/LoginButton";
 
-class Copy extends React.Component {
-    constructor() {
-        super()
-        
-        this.state={
-            images:"images"
-        }
+function Copy (){
+    const { user } = useAuth0();
+    const { name, email } = user;
+console.log(email);
 
-    };
 
-    onUpload = (event) => {
+    const onUpload = (event) => {
         this.setState({images:EventTarget})
     }
     
- render(){
+
+
         return (
             <>
-                <Header />
+                <Header name = {name} email={email}/>
                 <div id="wrapper" >
                     <div className="container1 fixed">
                         <Headers />
@@ -37,19 +36,19 @@ class Copy extends React.Component {
                         <Footers />
                     </div>
                     <div id="container2">
-                    <ContainerTabs />
+                    <ContainerTabs name = {name} email={email} />
 
                     </div>
 
                     <div>
-                        <FileUpload onUpload={this.onUpload} />
+                        <FileUpload onUpload={onUpload} />
                     </div>
                 </div>
             </>
         );
     }
 
-}
+
 
 export default Copy;
 

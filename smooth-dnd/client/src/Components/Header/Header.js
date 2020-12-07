@@ -1,6 +1,7 @@
 import React from "react"
 import "./Header.css"
-function Header (){
+import LogoutButton from "../LogoutButton/LogoutButton"
+function Header (props){
 
 
     return (
@@ -9,6 +10,8 @@ function Header (){
         <a className="navbar-brand" href="/id">
           <img src="../../../logo.png" height="70" alt="cybermark logo"/>
         </a>
+    <h3>Hello {props.name}</h3>
+        <LogoutButton/>
       </nav>
       
     )
