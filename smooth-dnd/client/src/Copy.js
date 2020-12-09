@@ -41,7 +41,7 @@ console.log(email);
                     </div>
 
                     <div>
-                        <FileUpload onUpload={onUpload} />
+                        <FileUpload name={name} email={email} onUpload={onUpload} />
                     </div>
                 </div>
             </>

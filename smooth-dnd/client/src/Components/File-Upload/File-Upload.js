@@ -32,7 +32,7 @@ class FileUpload extends React.Component {
       data.append('file', this.state.selectedFile[x])
     }
 
-    axios.post("http://localhost:8000/upload", data, {
+    axios.post("http://localhost:3001/upload", data, {
       // receive two    parameter endpoint url ,form data
       onUploadProgress: ProgressEvent => {
         this.setState({
@@ -58,7 +58,9 @@ class FileUpload extends React.Component {
 
 
           <div className="form-group files">
-            <label>Upload Your File </label>
+            <label>Upload Your Files </label>
+            <br></br>
+            <i>**max 10</i>
             <ToastContainer />
             <input type="file" multiple className="form-control" name="file" onChange={this.onChangeHandler} />
             <Progress max="100" color="success" value={this.state.loaded} >{Math.round(this.state.loaded,2) }%</Progress>

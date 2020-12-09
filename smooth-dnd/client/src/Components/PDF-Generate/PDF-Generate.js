@@ -1,26 +1,33 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import jsPDF from 'jspdf'
-import API from "../../utils/API"
-import { useAuth0 } from '@auth0/auth0-react';
+// import API from "../../utils/API"
+// import { useAuth0 } from '@auth0/auth0-react';
+import Axios from "axios";
 
-function PDFGenerate(props){
+class PDFGenerate extends React.Component {
     // const { user } = useAuth0();    
-    const [values, setValues] = useState({ userName: props.userName, email: props.userEmail, projects: [] });
+    // const [values, setValues] = useState({ userName: props.userName, email: props.userEmail, projects: [] });
     // const [errors, setErrors] = useState({});
+    constructor(props) {
+        super(props);
+        this.state = {
+            selectedFile: null
+        }
 
+    }
 
-    const generatePDF = () => {
-        
+    generatePDF = () => {
+
         var data1 = [];
-        var dataFromContainer1 = props.dataFromContainer1
+        var dataFromContainer1 = this.props.dataFromContainer1
         console.log(dataFromContainer1);
         dataFromContainer1.map((element) => {
             console.log(element.data);
             data1.push(element.data)
-            return data1 
+            return data1
         })
         var data2 = [];
-        var dataFromContainer2 = props.dataFromContainer2
+        var dataFromContainer2 = this.props.dataFromContainer2
         console.log(dataFromContainer2);
         dataFromContainer2.map((element) => {
             console.log(element.data);
@@ -28,7 +35,7 @@ function PDFGenerate(props){
 
         })
         var data3 = [];
-        var dataFromContainer3 = props.dataFromContainer3
+        var dataFromContainer3 = this.props.dataFromContainer3
         console.log(dataFromContainer3);
         dataFromContainer3.map((element) => {
             console.log(element.data);
@@ -36,7 +43,7 @@ function PDFGenerate(props){
 
         })
         var data4 = [];
-        var dataFromContainer4 = props.dataFromContainer4
+        var dataFromContainer4 = this.props.dataFromContainer4
         console.log(dataFromContainer4);
         dataFromContainer4.map((element) => {
             console.log(element.data);
@@ -44,7 +51,7 @@ function PDFGenerate(props){
 
         })
         var data5 = [];
-        var dataFromContainer5 = props.dataFromContainer5
+        var dataFromContainer5 = this.props.dataFromContainer5
         console.log(dataFromContainer5);
         dataFromContainer5.map((element) => {
             console.log(element.data);
@@ -52,7 +59,7 @@ function PDFGenerate(props){
 
         })
         var data6 = [];
-        var dataFromContainer6 = props.dataFromContainer6
+        var dataFromContainer6 = this.props.dataFromContainer6
         console.log(dataFromContainer6);
         dataFromContainer6.map((element) => {
             console.log(element.data);
@@ -60,61 +67,74 @@ function PDFGenerate(props){
 
         })
         var data7 = [];
-        var dataFromContainer7 = props.dataFromContainer7
+        var dataFromContainer7 = this.props.dataFromContainer7
         console.log(dataFromContainer7);
         dataFromContainer7.map((element) => {
             console.log(element.data);
-            data7.push(element.data)
-
+            data7.push(element.data);
         })
 
         var doc = new jsPDF('p', 'pt');
         doc.text(20, 20, data1);
-        if(data2.length > 0){
+        if (data2.length > 0) {
             doc.addPage();
             doc.text(20, 20, data2);
         }
-        if(data3.length > 0){
+        if (data3.length > 0) {
             doc.addPage();
             doc.text(20, 20, data3);
         }
-        if(data4.length > 0){
+        if (data4.length > 0) {
             doc.addPage();
             doc.text(20, 20, data4);
         }
-        if(data5.length > 0){
+        if (data5.length > 0) {
             doc.addPage();
             doc.text(20, 20, data5);
         }
-        if(data6.length > 0){
+        if (data6.length > 0) {
             doc.addPage();
             doc.text(20, 20, data6);
         }
-        if(data7.length > 0){
+        if (data7.length > 0) {
             doc.addPage();
             doc.text(20, 20, data7);
         }
-        doc.save('demo.pdf');
+        var temp = doc.save('demo.pdf');
+        var data = new FormData();
+        data.append("pdf_file", temp);
+        var post = new XMLHttpRequest();
+        
 
-        API.saveUser(values)
-        .then(() => {
-            console.log(values);
-            
-        })
-        .catch(err => console.log(err)
-        )
+        // var data = doc.output('blob')
+
+        const postPdf = () => {
+            Axios.post("http://localhost:3001/pdfUpload", post).then((res) => {
+                if (res.status === 'ok') console.log("yeah");
+                else console.log(res);
+            })
+        }
+        setTimeout(postPdf, 500)
+
+        // API.saveUser(values)
+        // .then(() => {
+        //     console.log(values);
+
+        // })
+        // .catch(err => console.log(err)
+        // )
 
     }
 
-    
+    render() {
         return (
             <div className="btn-container">
-                <button className="btn capital long" onClick={generatePDF} type="primary">Download PDF</button>
+                <button id="pdfBtn" className="btn capital long" onClick={this.generatePDF} type="primary">Download PDF</button>
             </div>
         );
-    
-}
 
+    }
+}
 export default PDFGenerate;
 
 
@@ -141,7 +161,7 @@ export default PDFGenerate;
 // var img = new Image()
 // for (let i = 0; i < data1.length; i++) {
 //     const picture = data1[i];
-    
+
 //     img.src=picture
 //     doc.addImage(img, "png", 10,78,580,300);
 //     doc.text(20,20," vcxvxcv")
