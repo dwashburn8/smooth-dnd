@@ -16,6 +16,25 @@ class PDFGenerate extends React.Component {
 
     }
 
+ blobToFile = (theBlob, fileName) => {
+        //A Blob() is almost a File() - it's just missing the two properties below which we will add
+        theBlob.lastModifiedDate = new Date();
+        theBlob.name = fileName;
+        return theBlob;
+    }
+
+    passPdf = () => {
+        const dataForm = new FormData()
+        dataForm.append('file', this.state.selectedFile)
+
+        Axios.post("http://localhost:3001/pdfUpload", dataForm, {
+            // receive two    parameter endpoint url ,form data
+
+          })
+    }
+
+
+
     generatePDF = () => {
 
         var data1 = [];
@@ -100,21 +119,15 @@ class PDFGenerate extends React.Component {
             doc.addPage();
             doc.text(20, 20, data7);
         }
-        var temp = doc.save('demo.pdf');
-        var data = new FormData();
-        data.append("pdf_file", temp);
-        var post = new XMLHttpRequest();
+        doc.save('demo.pdf');
+        var res = btoa(doc.output())
+        console.log(res);
         
+        Axios.post("http://localhost:3001/pdfUpload", res).then((res) => {
+            if(res.status === 'ok') console.log("Yeah!");
+            else console.log(":(");
+        })
 
-        // var data = doc.output('blob')
-
-        const postPdf = () => {
-            Axios.post("http://localhost:3001/pdfUpload", post).then((res) => {
-                if (res.status === 'ok') console.log("yeah");
-                else console.log(res);
-            })
-        }
-        setTimeout(postPdf, 500)
 
         // API.saveUser(values)
         // .then(() => {

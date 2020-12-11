@@ -7,8 +7,6 @@ var multer = require('multer')
 var cors = require('cors');
 const mongoose = require("mongoose");
 const fs = require('fs');
-const multipartMiddleware = require('connect-multiparty')();
-const publicFolder = "./public"
 var count = 1;
 
 
@@ -62,15 +60,18 @@ var upload2 = multer({ storage: pdfStorage }).single('file')
   // setTimeout(sendEmail, 500)
 });
 
+var pdf = []
 
-app.post('/pdfUpload', multipartMiddleware, (request, response) => {
-  fs.readFile(request.files.pdf_file.path, (err, data) => {
-      fs.writeFile(filePath, data, function (err) {
-          if (err) throw err;
-          response.send('Done')
-      });
+app.post('/pdfUpload', function (req, res) {
+
+  // var string = JSON.stringify(req.body)
+console.log(req.body);
+
+  sendEmail(req.body, (res) => {
+    res.status(200).json({"status": res ? 'ok' : 'error' });
+  
   })
-})
+});
 
 
 // EMAIL SERVER CODE 
@@ -89,21 +90,40 @@ var mail = nodemailer.createTransport({
   });
 
 
+  
+  
+  
+  
+  const sendEmail = (data, callback) => {
 
-  
-  
-  
-  
-  const sendEmail = () => {
-
-    fs.readdir(publicFolder, (err, files) => {
+    fs.readdir("./public", (err, files) => {
       console.log(files.length);
       var fileLength = files.length;
       var attachments = [{}]
+      if(fileLength === "undefined"){
+        attachments = [
+          {
+            filename: 'attachment.pdf',
+            content: data,
+            path: data,
+            contentType: 'application/pdf',
+            encoding: 'base64' 
+          }
+        ]
+      }
       if (fileLength > 0){
-        attachments = [{
+        attachments = [
+        {
           path:"./public/image1.png"
-        }]
+        },
+        {
+          filename: 'attachment.pdf',
+          content: data,
+          path: data,
+          contentType: 'application/pdf',
+          encoding: 'base64' 
+        }
+      ]
       }
       if (fileLength > 1){
         attachments = [
@@ -316,8 +336,10 @@ var mail = nodemailer.createTransport({
       mail.sendMail(mailOptions, function (error, info) {
         if (error) {
           console.log(error);
+          callback(false)
         } else {
           console.log('Email sent: ' + info.response);
+          callback(true)
         }
       });
 
