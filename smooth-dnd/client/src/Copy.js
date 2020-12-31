@@ -28,6 +28,8 @@ console.log(email);
                 <Header name = {name} email={email}/>
                 <div id="wrapper" >
                     <div className="container1 fixed">
+                    <img src="../../../logo.png" height="45" alt="cybermark logo"/>
+<br></br>
                         <Headers />
                         <ContentContainer />
                         <Gallery />
@@ -35,14 +37,16 @@ console.log(email);
                         <ContactContainer />
                         <Footers />
                     </div>
+                    {/* <div>
+                        <FileUpload name={name} email={email} onUpload={onUpload} />
+                    </div> */}
+
                     <div id="container2">
                     <ContainerTabs name = {name} email={email} />
 
                     </div>
 
-                    <div>
-                        <FileUpload name={name} email={email} onUpload={onUpload} />
-                    </div>
+                    
                 </div>
             </>
         );

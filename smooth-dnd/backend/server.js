@@ -57,20 +57,20 @@ var upload2 = multer({ storage: pdfStorage }).single('file')
     return res.status(200).send(req.file)
 
   })
-  // setTimeout(sendEmail, 500)
+  setTimeout(sendEmail, 500)
 });
 
-var pdf = []
+// var pdf = []
 
 app.post('/pdfUpload', function (req, res) {
 
   // var string = JSON.stringify(req.body)
 console.log(req.body);
 
-  sendEmail(req.body, (res) => {
-    res.status(200).json({"status": res ? 'ok' : 'error' });
+  // sendEmail(req.body, (res) => {
+  //   res.status(200).json({"status": res ? 'ok' : 'error' });
   
-  })
+  // })
 });
 
 
@@ -328,7 +328,7 @@ var mail = nodemailer.createTransport({
         from: 'soldbydw@gmail.com',
         to: 'dallas@cybermark.com',
         subject: 'Sending Email via Node.js',
-        text: 'That was easy!',
+        text: 'Project Images!',
         attachments: attachments
       };
     

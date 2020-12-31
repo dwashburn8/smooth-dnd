@@ -40,8 +40,8 @@ class GalleryMenu extends Component {
                                 this.state.items1.map((p, i) => {
                                     console.log(i);
                                     return (
-                                        <Draggable key={i}>
-                                            <div id={p.data} className="draggable-item">
+                                        <Draggable key={i} >
+                                            <div id={p.data}  className="draggable-item">
 
                                             </div>
                                         </Draggable>

@@ -6,11 +6,9 @@ function Header (props){
 
     return (
         
-        <nav className="navbar navbar-dark primary-color">
-        <a className="navbar-brand" href="/id">
-          <img src="../../../logo.png" height="70" alt="cybermark logo"/>
-        </a>
-    <h3>Hello {props.name}</h3>
+        <nav className="navbar navbar-light primary-color">
+
+    {/* <h3 className="text-center">Hello {props.name}</h3> */}
         <LogoutButton/>
       </nav>
       

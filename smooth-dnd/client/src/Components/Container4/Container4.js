@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Draggable } from 'react-smooth-dnd';
+import DuplicateButton from "../Duplicate-Button/Duplicate-Button"
 
 import XButton from "../XButton/XButton"
 
@@ -30,7 +31,7 @@ class Container4 extends Component {
 
     render() {
         return (
-            <> 
+            <>
                 <Container dragClass="opacity-ghost" dropClass="opacity-ghost-drop" id="dropZone" groupName="1" getChildPayload={this.props.getChildPayload} onDrop={this.props.onDrop}
                     dropPlaceholder={{
                         animationDuration: 150,
@@ -43,7 +44,9 @@ class Container4 extends Component {
                             return (
                                 <Draggable key={i}>
                                     <div id={p.data} className="draggable-item">
-                                        <XButton removeElement={this.props.removeElement}  handleXButton={this.handleXButton} />
+                                        <DuplicateButton duplicateElement={this.props.duplicateElement} />
+
+                                        <XButton removeElement={this.props.removeElement} handleXButton={this.handleXButton} />
                                     </div>
                                 </Draggable>
                             );

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Draggable } from 'react-smooth-dnd';
 import XButton from "../XButton/XButton"
+import DuplicateButton from "../Duplicate-Button/Duplicate-Button"
 
 
 
@@ -40,6 +41,7 @@ class Container1 extends Component {
                             return (
                                 <Draggable key={i}>
                                     <div id={p.data} className="draggable-item">
+                                        <DuplicateButton duplicateElement={this.props.duplicateElement}/>
                                         <XButton removeElement={this.props.removeElement} handleXButton={this.handleXButton} />
                                     </div>
                                 </Draggable>

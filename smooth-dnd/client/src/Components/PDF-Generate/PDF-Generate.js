@@ -37,7 +37,9 @@ class PDFGenerate extends React.Component {
 
     generatePDF = () => {
 
+        
         var data1 = [];
+        data1.push(this.props.pageTitles[0])
         var dataFromContainer1 = this.props.dataFromContainer1
         console.log(dataFromContainer1);
         dataFromContainer1.map((element) => {
@@ -46,6 +48,10 @@ class PDFGenerate extends React.Component {
             return data1
         })
         var data2 = [];
+        if (this.props.pageTitles.length > 1){
+
+            data2.push(this.props.pageTitles[1])
+        }
         var dataFromContainer2 = this.props.dataFromContainer2
         console.log(dataFromContainer2);
         dataFromContainer2.map((element) => {
@@ -54,6 +60,10 @@ class PDFGenerate extends React.Component {
 
         })
         var data3 = [];
+        if (this.props.pageTitles.length > 2){
+
+            data3.push(this.props.pageTitles[2])
+        }
         var dataFromContainer3 = this.props.dataFromContainer3
         console.log(dataFromContainer3);
         dataFromContainer3.map((element) => {
@@ -62,6 +72,10 @@ class PDFGenerate extends React.Component {
 
         })
         var data4 = [];
+        if (this.props.pageTitles.length > 3){
+
+            data4.push(this.props.pageTitles[3])
+        }
         var dataFromContainer4 = this.props.dataFromContainer4
         console.log(dataFromContainer4);
         dataFromContainer4.map((element) => {
@@ -70,6 +84,10 @@ class PDFGenerate extends React.Component {
 
         })
         var data5 = [];
+        if (this.props.pageTitles.length > 4){
+
+            data5.push(this.props.pageTitles[4])
+        }
         var dataFromContainer5 = this.props.dataFromContainer5
         console.log(dataFromContainer5);
         dataFromContainer5.map((element) => {
@@ -78,6 +96,10 @@ class PDFGenerate extends React.Component {
 
         })
         var data6 = [];
+        if (this.props.pageTitles.length > 5){
+
+            data6.push(this.props.pageTitles[5])
+        }
         var dataFromContainer6 = this.props.dataFromContainer6
         console.log(dataFromContainer6);
         dataFromContainer6.map((element) => {
@@ -86,6 +108,10 @@ class PDFGenerate extends React.Component {
 
         })
         var data7 = [];
+        if (this.props.pageTitles.length > 6){
+
+            data7.push(this.props.pageTitles[6])
+        }
         var dataFromContainer7 = this.props.dataFromContainer7
         console.log(dataFromContainer7);
         dataFromContainer7.map((element) => {
@@ -142,7 +168,7 @@ class PDFGenerate extends React.Component {
     render() {
         return (
             <div className="btn-container">
-                <button id="pdfBtn" className="btn capital long" onClick={this.generatePDF} type="primary">Download PDF</button>
+                <button id="pdfBtn" className="" onClick={this.generatePDF} type="primary">Download PDF</button>
             </div>
         );
 
