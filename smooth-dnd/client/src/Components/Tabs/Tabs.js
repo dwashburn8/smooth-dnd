@@ -8,6 +8,7 @@ import Container4 from "../Container4/Container4"
 import Container5 from "../Container5/Container5"
 import Container6 from "../Container6/Container6"
 import Container7 from "../Container7/Container7"
+import Modal from "../Modal/Modal"
 import Header1 from "../Headers/Header1/Header1"
 import { applyDrag, generateItems } from '../../utils';
 import PDFGenerate from "../PDF-Generate/PDF-Generate"
@@ -35,8 +36,114 @@ class ContainerTabs extends Component {
             items5: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 5 - ${i}` })),
             items6: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 6 - ${i}` })),
             items7: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 7 - ${i}` })),
-            items8: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 8 - ${i}` }))
+            items8: generateItems(0, (i) => ({ id: '1' + i, data: `Draggable 8 - ${i}` })),
+            pageName2: "+",
+            pageName3: "+",
+            pageName4: "+",
+            pageName5: "+",
+            pageName6: "+",
+            pageName7: "+",
+            modalInputName: "",
+            isHidden:true
         }
+    }
+
+    toggleHidden = () => {
+        this.setState({isHidden: !this.state.isHidden})
+    }
+
+    handleChange = (event) => {
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        var modalBackground = document.getElementById("modal-bk")
+        
+        if(modalBackground.parentElement.id === "tab-tab2"){
+            this.setState({
+                pageName2:value
+            });
+        }
+
+    }
+
+    handleSubmit = (event) => {
+        this.modalClose();
+        if(this.state.pageName2.length > 1){
+            pageTitles.push(this.state.pageName2)
+        }
+
+        if(this.state.pageName3.length > 1){
+            pageTitles.push(this.state.pageName3)
+        }
+
+        if(this.state.pageName4.length > 1){
+            pageTitles.push(this.state.pageName4)
+        }
+
+        if(this.state.pageName5.length > 1){
+            pageTitles.push(this.state.pageName5)
+        }
+
+        if(this.state.pageName6.length > 1){
+            pageTitles.push(this.state.pageName6)
+        }
+
+        if(this.state.pageName7.length > 1){
+            pageTitles.push(this.state.pageName7)
+        }
+
+        var divId = event.target.parentElement;
+        var divParent = divId.parentElement
+        var divGrandparent = divParent.parentElement
+        var lastOne = divGrandparent.parentElement
+        var oneINeed = lastOne.parentElement
+        console.log(oneINeed);
+
+
+        if (oneINeed.id == "tab-tab2" && oneINeed.dataset.clicks == 1) {
+            var link3 = document.getElementById("link-3")
+            link3.style.visibility = "visible"
+        }
+
+        if (oneINeed.id == "tab-tab3" && oneINeed.dataset.clicks == 1) {
+            var link4 = document.getElementById("link-4")
+            link4.style.visibility = "visible"
+        }
+
+        if (oneINeed.id == "tab-tab4" && oneINeed.dataset.clicks == 1) {
+            var link5 = document.getElementById("link-5")
+            link5.style.visibility = "visible"
+        }
+
+        if (oneINeed.id == "tab-tab5" && oneINeed.dataset.clicks == 1) {
+            var link6 = document.getElementById("link-6")
+            link6.style.visibility = "visible"
+        }
+
+        if (oneINeed.id == "tab-tab6" && oneINeed.dataset.clicks == 1) {
+            var link7 = document.getElementById("link-7")
+            link7.style.visibility = "visible"
+        }
+    }
+
+    modalOpen = (event) => {
+
+        this.toggleHidden();
+        var element = event.target
+        element.setAttribute("data-clicks", 1)
+        // var modal = document.getElementById("modal-wrap")
+        // modal.style.visibility="visible"
+        // var modalBackground = document.getElementById("modal-bk")
+        // modalBackground.style.visibility="visible"
+    }
+
+    modalClose = () => {
+        this.toggleHidden();
+        console.log("modal closed clicked");
+        // var modal = document.getElementById("modal-wrap")
+        // modal.style.visibility="hidden"
+        // var modalBackground = document.getElementById("modal-bk")
+        // modalBackground.style.visibility="hidden"
     }
 
     removeElement1 = (event) => {
@@ -69,7 +176,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items2);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items2: array })
@@ -130,7 +237,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items3);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items3: array })
@@ -176,7 +283,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items4);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items4: array })
@@ -222,7 +329,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items5);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items5: array })
@@ -269,7 +376,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items6);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items6: array })
@@ -316,7 +423,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items7);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items7: array })
@@ -362,7 +469,7 @@ class ContainerTabs extends Component {
         })
         console.log(element);
         console.log(this.state.items8);
-        
+
         // element.setAttribute("id", "working")
         array.push(element[elementPosition])
         this.setState({ items8: array })
@@ -382,7 +489,6 @@ class ContainerTabs extends Component {
 
     handleNameSwitch(event) {
         event.preventDefault();
-        console.log(header1);
 
         if (event.target.dataset.clicks == 0) {
 
@@ -462,22 +568,130 @@ class ContainerTabs extends Component {
                                 <TabLink to="tab1">Home Page</TabLink>
                             </li>
                             <li className="nav-item" id="link-2">
-                                <TabLink data-clicks={0} onClick={this.handleNameSwitch} to="tab2">+</TabLink>
+                                <TabLink data-clicks={0} onClick={this.modalOpen} to="tab2">
+                                    {this.state.pageName2}
+                                    <Modal className={this.state.isHidden ? "hidden" : "visible"}  modalClose={this.modalClose}>
+                                        <div className="form-group">
+                                            <label>Enter Page Name:</label>
+                                            <input
+                                                type="text"
+                                                name ={this.state.pageName2}
+                                                onChange={e => this.handleChange(e)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="btn" type="button" onClick={this.handleSubmit}>
+                                                Save
+                                            </a>
+                                        </div>
+                                    </Modal>
+                                </TabLink>
                             </li>
                             <li className="nav-item" id="link-3" >
-                                <TabLink data-clicks={0} onClick={this.handleNameSwitch} to="tab3">+</TabLink>
+                            <TabLink data-clicks={0} onClick={this.modalOpen} to="tab3">
+                                    {this.state.pageName3}
+                                    <Modal className={this.state.isHidden ? "hidden" : "visible"}  modalClose={this.modalClose}>
+                                        <div className="form-group">
+                                            <label>Enter Page Name:</label>
+                                            <input
+                                                type="text"
+                                                name ={this.state.pageName3}
+                                                onChange={e => this.handleChange(e)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="btn" type="button" onClick={this.handleSubmit}>
+                                                Save
+                                            </a>
+                                        </div>
+                                    </Modal>
+                                </TabLink>
                             </li>
                             <li className="nav-item" id="link-4" >
-                                <TabLink data-clicks={0} onClick={this.handleNameSwitch} to="tab4">+</TabLink>
+                            <TabLink data-clicks={0} onClick={this.modalOpen} to="tab4">
+                                    {this.state.pageName4}
+                                    <Modal className={this.state.isHidden ? "hidden" : "visible"} modalClose={this.modalClose}>
+                                        <div className="form-group">
+                                            <label>Enter Page Name:</label>
+                                            <input
+                                                type="text"
+                                                name ={this.state.pageName3}
+                                                onChange={e => this.handleChange(e)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="btn" type="button" onClick={this.handleSubmit}>
+                                                Save
+                                            </a>
+                                        </div>
+                                    </Modal>
+                                </TabLink>
                             </li>
                             <li className="nav-item" id="link-5">
-                                <TabLink data-clicks={0} onClick={this.handleNameSwitch} to="tab5">+</TabLink>
+                            <TabLink data-clicks={0} onClick={this.modalOpen} to="tab5">
+                                    {this.state.pageName5}
+                                    <Modal className={this.state.isHidden ? "hidden" : "visible"} modalClose={this.modalClose}>
+                                        <div className="form-group">
+                                            <label>Enter Page Name:</label>
+                                            <input
+                                                type="text"
+                                                name ={this.state.pageName3}
+                                                onChange={e => this.handleChange(e)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="btn" type="button" onClick={this.handleSubmit}>
+                                                Save
+                                            </a>
+                                        </div>
+                                    </Modal>
+                                </TabLink>
                             </li>
                             <li className="nav-item" id="link-6" >
-                                <TabLink data-clicks={0} onClick={this.handleNameSwitch} to="tab6">+</TabLink>
+                            <TabLink data-clicks={0} onClick={this.modalOpen} to="tab6">
+                                    {this.state.pageName6}
+                                    <Modal className={this.state.isHidden ? "hidden" : "visible"} modalClose={this.modalClose}>
+                                        <div className="form-group">
+                                            <label>Enter Page Name:</label>
+                                            <input
+                                                type="text"
+                                                name ={this.state.pageName3}
+                                                onChange={e => this.handleChange(e)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="btn" type="button" onClick={this.handleSubmit}>
+                                                Save
+                                            </a>
+                                        </div>
+                                    </Modal>
+                                </TabLink>
                             </li>
                             <li className="nav-item" id="link-7">
-                                <TabLink data-clicks={0} onClick={this.handleNameSwitch} to="tab7">+</TabLink>
+                            <TabLink data-clicks={0} onClick={this.modalOpen} to="tab7">
+                                    {this.state.pageName7}
+                                    <Modal className={this.state.isHidden ? "hidden" : "visible"} modalClose={this.modalClose}>
+                                        <div className="form-group">
+                                            <label>Enter Page Name:</label>
+                                            <input
+                                                type="text"
+                                                name ={this.state.pageName3}
+                                                onChange={e => this.handleChange(e)}
+                                                className="form-control"
+                                            />
+                                        </div>
+                                        <div className="form-group">
+                                            <a className="btn" type="button" onClick={this.handleSubmit}>
+                                                Save
+                                            </a>
+                                        </div>
+                                    </Modal>
+                                </TabLink>
                             </li>
                         </ul>
 

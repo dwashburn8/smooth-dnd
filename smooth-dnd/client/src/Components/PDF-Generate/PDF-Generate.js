@@ -36,9 +36,12 @@ class PDFGenerate extends React.Component {
 
 
     generatePDF = () => {
-
+        var websiteURL = prompt("Please enter the url this template will be implemented to")
         
         var data1 = [];
+        if(websiteURL != null){
+            data1.push(websiteURL)
+        }
         data1.push(this.props.pageTitles[0])
         var dataFromContainer1 = this.props.dataFromContainer1
         console.log(dataFromContainer1);
@@ -57,7 +60,7 @@ class PDFGenerate extends React.Component {
         dataFromContainer2.map((element) => {
             console.log(element.data);
             data2.push(element.data)
-
+            return data2
         })
         var data3 = [];
         if (this.props.pageTitles.length > 2){
@@ -69,7 +72,7 @@ class PDFGenerate extends React.Component {
         dataFromContainer3.map((element) => {
             console.log(element.data);
             data3.push(element.data)
-
+            return data3
         })
         var data4 = [];
         if (this.props.pageTitles.length > 3){
@@ -81,7 +84,7 @@ class PDFGenerate extends React.Component {
         dataFromContainer4.map((element) => {
             console.log(element.data);
             data4.push(element.data)
-
+            return data4
         })
         var data5 = [];
         if (this.props.pageTitles.length > 4){
@@ -93,7 +96,7 @@ class PDFGenerate extends React.Component {
         dataFromContainer5.map((element) => {
             console.log(element.data);
             data5.push(element.data)
-
+            return data5
         })
         var data6 = [];
         if (this.props.pageTitles.length > 5){
@@ -105,7 +108,7 @@ class PDFGenerate extends React.Component {
         dataFromContainer6.map((element) => {
             console.log(element.data);
             data6.push(element.data)
-
+            return data6
         })
         var data7 = [];
         if (this.props.pageTitles.length > 6){
@@ -117,6 +120,7 @@ class PDFGenerate extends React.Component {
         dataFromContainer7.map((element) => {
             console.log(element.data);
             data7.push(element.data);
+            return data7
         })
 
         var doc = new jsPDF('p', 'pt');

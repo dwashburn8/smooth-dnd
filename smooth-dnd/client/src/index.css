@@ -380,3 +380,36 @@ color: teal;
   background-color: #FFF;  
   color:#3c3c3c
 }
+
+
+#modal-wrap{
+  z-index: 9999999;
+  justify-content: center;
+  display: flex;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background-color: #FFF;
+  border: solid;
+  padding: 25px;
+}
+
+#modal-bk{
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #3c3c3c;
+  opacity: 0.5;
+  z-index: 9999998;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.visible{
+  visibility: visible;
+}

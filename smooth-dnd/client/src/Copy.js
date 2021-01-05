@@ -37,9 +37,9 @@ console.log(email);
                         <ContactContainer />
                         <Footers />
                     </div>
-                    {/* <div>
+                    <div>
                         <FileUpload name={name} email={email} onUpload={onUpload} />
-                    </div> */}
+                    </div>
 
                     <div id="container2">
                     <ContainerTabs name = {name} email={email} />
